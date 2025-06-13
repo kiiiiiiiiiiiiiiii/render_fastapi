@@ -15,14 +15,14 @@ async def root():
 
 @app.get("/index")
 def index():
-    html_content = """
+    html_content = f"""
         <html>
             <head>
                 <title>Some HTML in here</title>
             </head>
             <body>
                 <h1>Look ma! HTML!</h1>
-                <p>こんにちは！</p>
+                <p>こんにちは！ 現在時刻は {datetime.datetime.now()}です。</p>
             </body>
         </html>
     """
@@ -49,6 +49,6 @@ def omikuji():
 
     return {"result": omikuji_list[random.randrange(10)]}
 
-@app.post("/hello")
-async def reply(name):
-    return {"response": f"こんにちは！{name}! 今{datetime.datetime.now()}だよ！また会おうね！"} 
+@app.post("/present")
+async def give_present(present):
+    return {"response": f"サーバです。メリークリスマス！ {present}ありがとう。3倍で返すね! {present * 3}。"}  # f文字列というPythonの機能を使っている
